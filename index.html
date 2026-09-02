@@ -7,66 +7,65 @@
 </head>
 <body>
 
-    <!-- 1. BARRA SUPERIOR -->
+    <!-- Cabecera de la pagina -->
     <header>
-        <!-- Logo de Yu-Gi-Oh! / Templo de Duelo -->
-        <div class="logo">
-            <img src="ruta-del-logo.png" alt="Yu-Gi-Oh! Templo de Duelo">
+        <div>
+            <img src="assets/logo.png" alt="Logo Yu-Gi-Oh Templo de Duelo">
         </div>
-
+        
         <!-- Menu de navegacion principal -->
         <nav>
-            <ul>
-                <li><a href="cartas.html">CARTAS</a></li>
-                <li><a href="duelos.html">DUELOS</a></li>
-                <li><a href="sucursal.html">SUCURSAL</a></li>
-            </ul>
+            <a href="index.html">CARTAS</a>
+            <a href="pages/duelos.html">DUELOS</a>
+            <a href="pages/sucursal.html">SUCURSAL</a>
         </nav>
 
-        <!-- Boton de cuenta -->
-        <div class="auth">
-            <a href="login.html">Registrarse / Iniciar sesion</a>
+        <div>
+            <a href="pages/registro.html">Registrarse / Iniciar sesion</a>
         </div>
     </header>
 
-
-    <!-- 2. CONTENIDO PRINCIPAL -->
+    <!-- Contenido principal unico de la pagina -->
     <main>
         
-        <!-- Titulo principal de la pantalla -->
+        <!-- Titulo principal -->
         <h1>Sucursales de Duelo</h1>
 
-        <!-- Cada tarjeta de tienda es una seccion -->
-        <section class="card-sucursal">
-            <img src="arcana.jpg" alt="Arcana Cartas & Juegos">
-            <div class="card-info">
-                <h2>Arcana Cartas & Juegos</h2>
-                <p>Tienda de juegos en La Paz, BCS / Gamecenter / Trading Card Games, Cartas Coleccionables, Role-Playing Games, juegos de mesa y mas! Pokemon, Yu-Gi-Oh!, One Piece Card Game, Magic The Gathering, D&D. Hacemos pedidos especiales.</p>
-                <strong>Abierto / Hacemos pedidos especiales</strong>
+        <!-- Seccion de la primera sucursal -->
+        <section>
+            <img src="assets/arcana.jpg" alt="Arcana Cartas y Juegos">
+            <div>
+                <h2>Arcana Cartas &amp; Juegos</h2>
+                <p>Tienda de juegos en La Paz, BCS / Gamecenter / Trading Card Games, Cartas Coleccionables, Role-Playing Games, juegos de mesa y mas! Pokemon, Yu-Gi-Oh!, One Piece Card Game, Magic The Gathering, D&amp;D. Hacemos pedidos especiales.</p>
+                <p><strong>Abierto / Hacemos pedidos especiales</strong></p>
             </div>
-            <button>Info</button>
+            <div>
+                <a href="pages/info-arcana.html">Info</a>
+            </div>
         </section>
 
-        <section class="card-sucursal">
-            <img src="amazing.jpg" alt="Amazing Comics & Books La Paz">
-            <div class="card-info">
-                <h2>Amazing Comics & Books La Paz</h2>
+        <!-- Seccion de la segunda sucursal -->
+        <section>
+            <img src="assets/amazing.jpg" alt="Amazing Comics y Books">
+            <div>
+                <h2>Amazing Comics &amp; Books La Paz</h2>
                 <p>Tienda de comics en La Paz, BCS / Comics, manga, libros, TCG, figuras. Hacemos pedidos especiales</p>
-                <strong>Disponible</strong>
+                <p><strong>Disponible</strong></p>
             </div>
-            <button>Info</button>
+            <div>
+                <a href="pages/info-amazing.html">Info</a>
+            </div>
         </section>
 
-        <!-- Boton de paginacion -->
-        <div class="pagination">
-            <button>SIGUIENTE &gt;</button>
+        <div>
+            <a href="pages/siguiente.html">SIGUIENTE &gt;</a>
         </div>
 
     </main>
 
-
+    <!-- Pie de pagina -->
     <footer>
-        <p>Yu-Gi-Oh! Templo de Duelo - Versión 1.0</p>
+        <p>Yu-Gi-Oh! Templo de Duelo - Version 1.0</p>
         <p>&copy; 2026 Todos los derechos reservados.</p>
     </footer>
 
