@@ -1,24 +1,75 @@
-
 <!DOCTYPE html>
-<html lang="en">
-
-
-
-    <head>
-    <!-- comentario -->   <title>Hola Mundo Web</title>
-    </head>
-    <meta charset="utf8">
-
-    <meta name="viewport" 
-    content="width=device-width, initial-scale=1.0" >
-
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh! Templo de Duelo</title>
+</head>
 <body>
-    <div id="header">
-     <h1>Hola Mundo Web</h1>
-        <h1><span>:) </Hola Mundo</h1>
-        
-    <div>
-</body>
-    </html>
 
-    
+    <!-- 1. BARRA SUPERIOR (HEADER) -->
+    <header>
+        <!-- Logo de Yu-Gi-Oh! / Templo de Duelo -->
+        <div class="logo">
+            <img src="ruta-del-logo.png" alt="Yu-Gi-Oh! Templo de Duelo">
+        </div>
+
+        <!-- Menú de navegación principal -->
+        <nav>
+            <ul>
+                <li><a href="cartas.html">CARTAS</a></li>
+                <li><a href="duelos.html">DUELOS</a></li>
+                <li><a href="sucursal.html">SUCURSAL</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botón de cuenta -->
+        <div class="auth">
+            <a href="login.html">Registrarse / Iniciar sesión</a>
+        </div>
+    </header>
+
+
+    <!-- 2. CONTENIDO PRINCIPAL (MAIN) -->
+    <main>
+        
+        <!-- Título principal de la pantalla -->
+        <h1>Sucursales de Duelo</h1>
+
+        <!-- Cada tarjeta de tienda es una sección (<section>) -->
+        <section class="card-sucursal">
+            <img src="arcana.jpg" alt="Arcana Cartas & Juegos">
+            <div class="card-info">
+                <h2>Arcana Cartas & Juegos</h2>
+                <p>Tienda de juegos en La Paz, BCS / Gamecenter / Trading Card Games, Cartas Coleccionables, Role-Playing Games, juegos de mesa y mas! Pokemon, Yu-Gi-Oh!, One Piece Card Game, Magic The Gathering, D&D. Hacemos pedidos especiales.</p>
+                <strong>Abierto / Hacemos pedidos especiales</strong>
+            </div>
+            <button>Info</button>
+        </section>
+
+        <section class="card-sucursal">
+            <img src="amazing.jpg" alt="Amazing Comics & Books La Paz">
+            <div class="card-info">
+                <h2>Amazing Comics & Books La Paz</h2>
+                <p>Tienda de comics en La Paz, BCS / Comics, manga, libros, TCG, figuras. Hacemos pedidos especiales</p>
+                <strong>Disponible</strong>
+            </div>
+            <button>Info</button>
+        </section>
+
+        <!-- Botón de paginación -->
+        <div class="pagination">
+            <button>SIGUIENTE &gt;</button>
+        </div>
+
+    </main>
+
+
+    <!-- 3. PIE DE PÁGINA (FOOTER) -->
+    <footer>
+        <p>Yu-Gi-Oh! Templo de Duelo - Versión 1.0</p>
+        <p>&copy; 2026 Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
