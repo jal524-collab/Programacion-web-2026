@@ -5,38 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yu-Gi-Oh! Templo de Duelo</title>
     <style>
-        body{
+        /* Buenas prácticas de CSS: Reset básico y diseño fluido */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            min-height: 100vh;
             background-image: url('imagenes/fondo.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-
             color: darkred;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            font-family: Arial, sans-serif;
         }
 
-        h1{
+        header {
+            width: 100%;
+            background-color: rgba(60, 20, 10, 0.8);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #f3c653;
+        }
+
+        .logo-nav {
+            height: 40px;
+        }
+
+        nav a {
+            color: #f3c653;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
             font-size: 3rem;
             text-align: center;
             margin-bottom: 20px;
+            color: #f3c653;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
+        .main-logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .btn-duelo {
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .btn-duelo:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-duelo img {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            padding: 10px;
+            font-size: 0.9rem;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
-    <h1>Yu-Gi-Oh! Templo de Duelo</h1>
-    <img src="imagenes/logo.png" alt="Imagen de la página 1" width="100%">
 
-    <a href="https://www.youtube.com/watch?v=QDia3e12czc" target="_blank">
-        <img src="imagenes/logo.png" width="100%">
-        
+    <!-- Cabecera semántica con la barra de navegación superior vista en tus capturas -->
+    <header>
+        <div>
+            <img src="imagenes/logo.png" alt="Mini logotipo Yu-Gi-Oh! Templo de Duelo" class="logo-nav">
+        </div>
+        <nav>
+            <a href="cartas.html">CARTAS</a>
+            <a href="duelos.html">DUELOS</a>
+            <a href="sucursal.html">SUCURSAL</a>
+            <a href="registro.html">Registrarse / Iniciar sesión</a>
+        </nav>
+    </header>
 
-    </a>
-    
+    <!-- Contenido Principal -->
+    <main>
+        <div>
+            <h1>Yu-Gi-Oh! Templo de Duelo</h1>
+            <!-- Imagen principal del logo con texto alternativo descriptivo -->
+            <img src="imagenes/logo.png" alt="Logotipo oficial de Yu-Gi-Oh! Templo de Duelos" class="main-logo">
+        </div>
+
+        <!-- Enlace interactivo con imagen para unirse a un duelo (ej. video o sección de duelos) -->
+        <div class="btn-duelo">
+            <a href="https://www.youtube.com/watch?v=QDia3e12czc" target="_blank" rel="noopener noreferrer">
+                <img src="imagenes/unirse_duelo.png" alt="Botón para unirse a un duelo de Yu-Gi-Oh!">
+            </a>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo</p>
+    </footer>
+
 </body>
 </html>
