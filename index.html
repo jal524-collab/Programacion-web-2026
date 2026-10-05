@@ -22,7 +22,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background-color: #d2b48c; 
+            background-color: #8D3824;
             color: #4a2511;
             display: flex;
             flex-direction: column;
@@ -102,7 +102,7 @@
             align-items: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin: 20px 0 40px 0;
+            margin: 20px 0 30px 0;
             width: 100%;
         }
 
@@ -118,26 +118,31 @@
             transform: scale(1.08);
         }
 
-        /* Boton de Duelo interactivo */
+        /* Boton de Duelo */
         .btn-duelo {
             display: inline-block;
+            background-color: #3c140a;
+            color: #f3c653;
+            padding: 14px 28px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 2px solid #5a2412;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             margin-top: 20px;
-            transition: transform 0.2s ease, filter 0.2s ease;
+            transition: all 0.2s ease;
         }
 
         .btn-duelo:hover {
-            transform: scale(1.06);
-            filter: brightness(1.1);
+            background-color: #5a2412;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
         }
 
-        .btn-duelo img {
-            max-width: 320px;
-            width: 100%;
-            height: auto;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
-        }
-
-        /* Pie de página */
+        /* Pie de pagina */
         footer {
             width: 100%;
             padding: 15px;
@@ -164,6 +169,10 @@
             }
             .monster-img {
                 max-height: 100px;
+            }
+            .btn-duelo {
+                font-size: 1rem;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -200,12 +209,10 @@
             <img src="./imagenes/monstruo4.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
         </div>
 
-        <!-- Enlace troll -->
-        <div class="btn-duelo">
-            <a href="https://www.youtube.com/shorts/3TBl4PWTpF0" target="_blank" rel="noopener noreferrer">
-                <img src="./imagenes/unirse_duelo.png" alt="Botón para unirse a un duelo de Yu-Gi-Oh!">
-            </a>
-        </div>
+        <!-- Boton de duelo troll -->
+        <a href="https://www.youtube.com/shorts/3TBl4PWTpF0" target="_blank" rel="noopener noreferrer" class="btn-duelo">
+            Unirse a un duelo
+        </a>
     </main>
 
     <!-- Pie de pagina -->
