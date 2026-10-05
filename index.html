@@ -22,6 +22,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
+            background-image: url('imagenes/fondo.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -37,18 +38,20 @@
         /* Barra de navegacion superior */
         header {
             width: 100%;
-            background-color: rgba(60, 20, 10, 0.9);
-            padding: 10px 30px;
+            background-color: rgba(60, 20, 10, 0.95);
+            padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #5a1f12;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo-nav {
-            height: 40px;
+            height: 45px;
             width: auto;
         }
 
@@ -57,7 +60,8 @@
             text-decoration: none;
             margin-left: 20px;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             transition: color 0.2s;
         }
 
@@ -69,52 +73,48 @@
         /* Contenido Principal */
         main {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
             flex-grow: 1;
-            justify-content: center;
-        }
-
-        .hero-content {
-            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-top: 10px;
+            margin-bottom: 25px;
             color: #f3c653;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
             letter-spacing: 1px;
         }
 
         .main-logo {
-            max-width: 350px;
+            max-width: 450px;
             width: 100%;
             height: auto;
-            margin-bottom: 15px;
-            filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.6));
+            margin-bottom: 30px;
+            filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.8));
         }
 
-        /* Seccion decorativa de Monstruos inferiores */
+        /* Contenedor de Monstruos en la parte inferior de la cabecera */
         .monsters-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 20px 0 40px 0;
             width: 100%;
         }
 
         .monster-img {
-            max-height: 140px;
+            max-height: 180px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.7));
+            filter: drop-shadow(0 6px 8px rgba(0,0,0,0.8));
             transition: transform 0.3s ease;
         }
 
@@ -125,19 +125,20 @@
         /* Boton de Duelo interactivo */
         .btn-duelo {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             transition: transform 0.2s ease, filter 0.2s ease;
         }
 
         .btn-duelo:hover {
             transform: scale(1.06);
-            filter: brightness(1.1);
+            filter: brightness(1.15);
         }
 
         .btn-duelo img {
-            max-width: 280px;
+            max-width: 320px;
             width: 100%;
             height: auto;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.8));
         }
 
         /* Pie de pagina */
@@ -147,25 +148,26 @@
             text-align: center;
             font-size: 0.9rem;
             color: #fff;
-            background-color: rgba(30, 10, 5, 0.8);
+            background-color: rgba(30, 10, 5, 0.9);
             border-top: 1px solid #5a1f12;
         }
 
-        /* Disenio Responsivo basico para celulares */
+        /* Responsivo para celulares */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 12px;
+                padding: 10px;
             }
             nav a {
-                margin: 0 10px;
-                font-size: 0.85rem;
+                margin: 0 8px;
+                font-size: 0.9rem;
             }
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .monster-img {
-                max-height: 100px;
+                max-height: 110px;
             }
         }
     </style>
@@ -183,17 +185,16 @@
             <a href="cartas.html">CARTAS</a>
             <a href="duelos.html">DUELOS</a>
             <a href="sucursal.html">SUCURSAL</a>
-            <a href="registro.html">Registrarse / Iniciar sesion</a>
+            <a href="registro.html">Registrarse / Iniciar sesión</a>
         </nav>
     </header>
 
     <!-- Contenido Principal -->
     <main>
-        <div class="hero-content">
-            <h1>Yu-Gi-Oh! Templo de Duelo</h1>
-            <!-- Imagen principal del logo -->
-            <img src="imagenes/logo.png" alt="Logotipo oficial de Yu-Gi-Oh! Templo de Duelos" class="main-logo">
-        </div>
+        <h1>Yu-Gi-Oh! Templo de Duelo</h1>
+        
+        <!-- Imagen principal del logo -->
+        <img src="imagenes/logo.png" alt="Logotipo oficial de Yu-Gi-Oh! Templo de Duelos" class="main-logo">
 
         <!-- Fila de monstruos decorativos -->
         <div class="monsters-container">
