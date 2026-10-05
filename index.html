@@ -22,14 +22,8 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            /* Color de respaldo cafe claro + la imagen de fondo */
             background-color: #d2b48c; 
-            background-image: url('./imagenes/fondo.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-attachment: fixed;
-            color: #4a2511; /* Texto oscuro para contraste sobre el fondo claro */
+            color: #4a2511;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -89,7 +83,7 @@
             margin-top: 10px;
             margin-bottom: 25px;
             color: #3c140a;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.4);
             letter-spacing: 1px;
         }
 
@@ -98,7 +92,7 @@
             width: 100%;
             height: auto;
             margin-bottom: 30px;
-            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.4));
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
         }
 
         /* Contenedor de Monstruos */
@@ -116,7 +110,7 @@
             max-height: 150px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
             transition: transform 0.3s ease;
         }
 
@@ -140,10 +134,10 @@
             max-width: 320px;
             width: 100%;
             height: auto;
-            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
         }
 
-        /* Pie de pagina */
+        /* Pie de página */
         footer {
             width: 100%;
             padding: 15px;
@@ -198,7 +192,7 @@
         <!-- Imagen principal del logo -->
         <img src="./imagenes/logo.png" alt="Logotipo oficial de Yu-Gi-Oh! Templo de Duelos" class="main-logo">
 
-        <!-- Fila de monstruos decorativos  -->
+        <!-- Fila de monstruos decorativos -->
         <div class="monsters-container">
             <img src="./imagenes/monstruo1.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
             <img src="./imagenes/monstruo2.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
