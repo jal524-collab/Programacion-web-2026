@@ -14,13 +14,14 @@
     <link rel="alternate" hreflang="en" href="https://www.yugiohtemplodeduelos.com/en/">
     
     <style>
+        /* 1. Selector universal (*) */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             min-height: 100vh;
             background-color: #8D3824;
             color: #4a2511;
@@ -78,6 +79,7 @@
             flex-grow: 1;
         }
 
+        /* 2. Selector de tipo (h1) */
         h1 {
             font-size: 3rem;
             margin-top: 10px;
@@ -85,6 +87,13 @@
             color: #3c140a;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.4);
             letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* 3. Selector de ID (#titulo-principal) */
+        #titulo-principal {
+            font-weight: bold;
+            text-transform: uppercase;
         }
 
         .main-logo {
@@ -118,7 +127,7 @@
             transform: scale(1.08);
         }
 
-        /* Boton de Duelo */
+        /* 4. Selector de clase (.btn-duelo) */
         .btn-duelo {
             display: inline-block;
             background-color: #3c140a;
@@ -196,7 +205,8 @@
 
     <!-- Contenido Principal -->
     <main>
-        <h1>Yu-Gi-Oh! Templo de Duelo</h1>
+        <!-- Agregado id="titulo-principal" para cumplir con el selector de id -->
+        <h1 id="titulo-principal">Yu-Gi-Oh! Templo de Duelo</h1>
         
         <!-- Imagen principal del logo -->
         <img src="./imagenes/logo.png" alt="Logotipo oficial de Yu-Gi-Oh! Templo de Duelos" class="main-logo">
