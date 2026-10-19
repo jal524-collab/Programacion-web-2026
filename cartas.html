@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas - Yu-Gi-Oh! Templo de Duelo</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #8D3824;
+            color: #f3c653;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(60, 20, 10, 0.95);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #3c140a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-nav { height: 45px; width: auto; }
+        nav a {
+            color: #f3c653;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+        nav a.active { color: #fff; text-decoration: underline; }
+
+        main {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Buscador */
+        .search-box {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 20px;
+            border: 2px solid #3c140a;
+            background-color: #3c140a;
+            color: #f3c653;
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-input::placeholder { color: #b8860b; }
+
+        /* Lista de Cartas */
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .card-item {
+            background-color: #3c140a;
+            border: 3px solid #200803;
+            padding: 15px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .card-img {
+            width: 140px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .card-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            color: #fff;
+        }
+
+        .card-desc {
+            flex: 2;
+            padding-left: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* Botón Siguiente */
+        .btn-siguiente {
+            background-color: #3c140a;
+            color: #f3c653;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #5a2412;
+            margin-top: 25px;
+            display: inline-block;
+        }
+        .btn-siguiente:hover { background-color: #5a2412; color: #fff; }
+
+        footer {
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            background-color: rgba(60, 20, 10, 0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html">
+            <img src="./imagenes/logo.png" alt="Yu-Gi-Oh!" class="logo-nav">
+        </a>
+        <nav>
+            <a href="cartas.html" class="active">CARTAS</a>
+            <a href="duelos.html">DUELOS</a>
+            <a href="sucursal.html">SUCURSAL</a>
+            <a href="registro.html">Registrarse / Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Buscador -->
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="🔍 BUSCAR CARTA">
+        </div>
+
+        <!-- Cartas -->
+        <div class="card-list">
+            <!-- Carta 1 -->
+            <div class="card-item">
+                <img src="./imagenes/kuriboh.png" alt="Kuriboh" class="card-img">
+                <div class="card-info">
+                    <h2 class="card-title">Kuriboh</h2>
+                    <div><strong>Tipo:</strong> Oscuridad</div>
+                    <div><strong>Nivel:</strong> 1</div>
+                    <div>Demonio/Efecto</div>
+                    <div><strong>ATK:</strong> 300 <strong>DEF:</strong> 200</div>
+                </div>
+                <div class="card-desc">
+                    Descarta esta carta de tu mano para hacer que el daño de batalla infligido por 1 monstruo de tu adversario a tus puntos de vida sea 0.
+                </div>
+            </div>
+
+            <!-- Carta 2 -->
+            <div class="card-item">
+                <img src="./imagenes/chica_maga.png" alt="Chica Maga Aspirante" class="card-img">
+                <div class="card-info">
+                    <h2 class="card-title">Chica Maga Aspirante</h2>
+                    <div><strong>Tipo:</strong> Oscuridad</div>
+                    <div><strong>Nivel:</strong> 1</div>
+                    <div>Lanzador de Conjuros/Efecto</div>
+                    <div><strong>ATK:</strong> 500 <strong>DEF:</strong> 200</div>
+                </div>
+                <div class="card-desc">
+                    Cuando esta carta es Invocada: aplica estos efectos, en secuencia, dependiendo del número de "Chica Maga Oscura" en tu lado del campo o Cementerio...
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="btn-siguiente">SIGUIENTE ></a>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
