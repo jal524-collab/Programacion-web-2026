@@ -5,29 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantenimiento - Yu-Gi-Oh! Templo de Duelo</title>
     <style>
-        * { box-sizing: border-box; }
-        body {
+        @font-face {
+            font-family: 'YuGiOhFont';
+            src: url('./fuentes/Matrix-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-principal: #8D3824;
+            --bg-header: rgba(60, 20, 10, 0.95);
+            --bg-tarjeta: #3c140a;
+            --color-dorado: #f3c653;
+            --color-blanco: #ffffff;
+            --fuente-principal: 'YuGiOhFont', Arial, sans-serif;
+            --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
             min-height: 100vh;
-            background-color: #8D3824;
-            color: #f3c653;
+            background-color: var(--bg-principal);
+            color: var(--color-dorado);
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: Arial, sans-serif;
+            font-family: var(--fuente-principal);
         }
 
         header {
             width: 100%;
-            background-color: rgba(60, 20, 10, 0.95);
+            background-color: var(--bg-header);
             padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo-nav { height: 45px; }
-        nav a { color: #f3c653; text-decoration: none; margin-left: 20px; font-weight: bold; }
+
+        .logo-nav {
+            height: 45px;
+        }
+
+        nav a {
+            color: var(--color-dorado);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            text-shadow: var(--sombra-texto);
+        }
 
         main {
             width: 100%;
@@ -41,18 +72,20 @@
         }
 
         .maintenance-box {
-            background-color: #3c140a;
+            background-color: var(--bg-tarjeta);
             border: 3px solid #200803;
             padding: 40px;
             text-align: center;
             font-size: 1.5rem;
-            line-height: 1.6;
+            line-height: 1.6; /* Formato de texto */
             margin-bottom: 30px;
+            letter-spacing: 1px; /* Formato de texto */
+            color: var(--color-dorado);
         }
 
         .main-logo-small {
             width: 250px;
-            background-color: #3c140a;
+            background-color: var(--bg-tarjeta);
             padding: 15px;
             border-radius: 20px;
             border: 2px solid #5a2412;
@@ -62,7 +95,8 @@
             width: 100%;
             padding: 15px;
             text-align: center;
-            background-color: rgba(60, 20, 10, 0.95);
+            color: var(--color-dorado);
+            background-color: var(--bg-header);
         }
     </style>
 </head>
