@@ -14,10 +14,9 @@
     <link rel="alternate" hreflang="en" href="https://www.yugiohtemplodeduelos.com/en/">
     
     <style>
-        /* Definición de Variables CSS y @font-face */
         @font-face {
             font-family: 'YuGiOhFont';
-            src: url('./fuentes/Matrix-Bold.woff2') format('woff2'); /* Coloca aquí tu archivo de fuente local si lo tienes */
+            src: url('./fuentes/Matrix-Bold.woff2') format('woff2');
             font-weight: bold;
             font-style: normal;
             font-display: swap;
@@ -26,14 +25,61 @@
         :root {
             --bg-principal: #8D3824;
             --bg-header: rgba(90, 40, 20, 0.95);
+            --bg-tarjeta: #3c140a;
             --color-dorado: #f3c653;
-            --color-marron-oscuro: #3c140a;
             --color-texto-base: #4a2511;
             --fuente-principal: 'YuGiOhFont', Arial, sans-serif;
             --sombra-texto: 2px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
-        /* Selector universal (*) */
+        /* COMPONENTES REPETIBLES */
+        .componente-tarjeta {
+            background-color: var(--bg-tarjeta);
+            border: 3px solid #200803;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .componente-boton {
+            background-color: #3c140a;
+            color: var(--color-dorado);
+            padding: 14px 28px;
+            border-radius: 8px;
+            border: 2px solid #5a2412;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .componente-boton:hover {
+            background-color: #5a2412;
+            color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .componente-aviso {
+            background-color: var(--bg-tarjeta);
+            border: 3px solid #200803;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: var(--color-dorado);
+            letter-spacing: 1px;
+        }
+
+        /* Estilos generales */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -51,7 +97,6 @@
             font-family: var(--fuente-principal);
         }
 
-        /* Barra de navegacion superior */
         header {
             width: 100%;
             background-color: var(--bg-header);
@@ -59,7 +104,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid var(--color-marron-oscuro);
+            border-bottom: 2px solid var(--bg-tarjeta);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
@@ -86,7 +131,6 @@
             text-decoration: underline;
         }
 
-        /* Contenido Principal */
         main {
             width: 100%;
             max-width: 1000px;
@@ -98,22 +142,19 @@
             flex-grow: 1;
         }
 
-        /* Selector de tipo (h1) con formato de texto avanzado */
         h1 {
             font-size: 3rem;
             margin-top: 10px;
             margin-bottom: 25px;
-            color: var(--color-marron-oscuro);
+            color: var(--bg-tarjeta);
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.4);
-            letter-spacing: 2px; /* Formato de texto: espaciado */
-            line-height: 1.2;    /* Formato de texto: altura de línea */
-            text-align: center;
+            letter-spacing: 2px;
+            line-height: 1.2;
         }
 
-        /* Selector de ID (#titulo-principal) */
         #titulo-principal {
             font-weight: bold;
-            text-transform: uppercase; /* Formato de texto: mayúsculas */
+            text-transform: uppercase;
         }
 
         .main-logo {
@@ -124,7 +165,6 @@
             filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
         }
 
-        /* Contenedor de Monstruos */
         .monsters-container {
             display: flex;
             justify-content: center;
@@ -147,33 +187,6 @@
             transform: scale(1.08);
         }
 
-        /* Selector de clase (.btn-duelo) con formato de texto */
-        .btn-duelo {
-            display: inline-block;
-            background-color: var(--color-marron-oscuro);
-            color: var(--color-dorado);
-            padding: 14px 28px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 6px;
-            border: 2px solid #5a2412;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-            text-shadow: var(--sombra-texto);
-            text-transform: uppercase; /* Formato de texto */
-            letter-spacing: 1px;      /* Formato de texto */
-            margin-top: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-duelo:hover {
-            background-color: #5a2412;
-            color: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-        }
-
-        /* Pie de pagina */
         footer {
             width: 100%;
             padding: 15px;
@@ -181,10 +194,9 @@
             font-size: 0.9rem;
             color: var(--color-dorado);
             background-color: var(--bg-header);
-            border-top: 1px solid var(--color-marron-oscuro);
+            border-top: 1px solid var(--bg-tarjeta);
         }
 
-        /* Responsivo para celulares */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -201,16 +213,11 @@
             .monster-img {
                 max-height: 100px;
             }
-            .btn-duelo {
-                font-size: 1rem;
-                padding: 12px 20px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Barra de navegacion superior -->
     <header>
         <div>
             <a href="index.html">
@@ -225,28 +232,23 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal -->
     <main>
         <h1 id="titulo-principal">Yu-Gi-Oh! Templo de Duelo</h1>
         
-        <!-- Imagen principal del logo -->
-        <img src="./imagenes/logo.png" alt="Logotipo oficial de Yu-Gi-Oh! Templo de Duelos" class="main-logo">
+        <img src="./imagenes/logo.png" alt="Logotipo oficial" class="main-logo">
 
-        <!-- Fila de monstruos decorativos -->
         <div class="monsters-container">
-            <img src="./imagenes/monstruo1.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
-            <img src="./imagenes/monstruo2.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
-            <img src="./imagenes/monstruo3.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
-            <img src="./imagenes/monstruo4.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
+            <img src="./imagenes/monstruo1.png" alt="Monstruo 1" class="monster-img">
+            <img src="./imagenes/monstruo2.png" alt="Monstruo 2" class="monster-img">
+            <img src="./imagenes/monstruo3.png" alt="Monstruo 3" class="monster-img">
+            <img src="./imagenes/monstruo4.png" alt="Monstruo 4" class="monster-img">
         </div>
 
-        <!-- Boton de duelo -->
-        <a href="https://www.youtube.com/shorts/3TBl4PWTpF0" target="_blank" rel="noopener noreferrer" class="btn-duelo">
+        <a href="https://www.youtube.com/shorts/3TBl4PWTpF0" target="_blank" rel="noopener noreferrer" class="componente-boton">
             Unirse a un duelo
         </a>
     </main>
 
-    <!-- Pie de pagina -->
     <footer>
         <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
     </footer>
