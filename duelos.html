@@ -24,12 +24,49 @@
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* COMPONENTES REPETIBLES */
+        .componente-tarjeta {
+            background-color: var(--bg-tarjeta);
+            border: 3px solid #200803;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
         }
 
+        .componente-boton {
+            background-color: #5a2412;
+            color: var(--color-dorado);
+            padding: 8px 18px;
+            border-radius: 12px;
+            border: 2px solid #5a2412;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-shadow: var(--sombra-texto);
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .componente-boton:hover:not(:disabled) {
+            color: var(--color-blanco);
+            transform: scale(1.05);
+            background-color: #702e17;
+        }
+
+        .componente-boton:disabled {
+            background-color: #1a0804;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             min-height: 100vh;
             background-color: var(--bg-principal);
@@ -49,23 +86,9 @@
             align-items: center;
             border-bottom: 2px solid var(--bg-tarjeta);
         }
-
-        .logo-nav {
-            height: 45px;
-        }
-
-        nav a {
-            color: var(--color-dorado);
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            text-shadow: var(--sombra-texto);
-        }
-
-        nav a.active, nav a:hover {
-            color: var(--color-blanco);
-            text-decoration: underline;
-        }
+        .logo-nav { height: 45px; }
+        nav a { color: var(--color-dorado); text-decoration: none; margin-left: 20px; font-weight: bold; text-shadow: var(--sombra-texto); }
+        nav a.active, nav a:hover { color: var(--color-blanco); text-decoration: underline; }
 
         main {
             width: 100%;
@@ -84,16 +107,6 @@
             width: 100%;
         }
 
-        .room-card {
-            background-color: var(--bg-tarjeta);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-
         .avatar {
             width: 90px;
             height: 90px;
@@ -102,52 +115,11 @@
             border: 2px solid #5a2412;
         }
 
-        .room-info {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+        .room-info { display: flex; flex-direction: column; gap: 8px; }
+        .user-name { font-size: 1.1rem; font-weight: bold; color: var(--color-dorado); letter-spacing: 0.5px; }
+        .spaces { font-size: 0.9rem; color: var(--color-texto-suave); letter-spacing: 1px; text-transform: uppercase; }
 
-        .user-name {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--color-dorado);
-            letter-spacing: 0.5px;
-        }
-
-        .spaces {
-            font-size: 0.9rem;
-            color: var(--color-texto-suave);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .btn-unirse {
-            background-color: #5a2412;
-            color: var(--color-dorado);
-            border: none;
-            padding: 8px 18px;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            align-self: flex-start;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-unirse:hover:not(:disabled) {
-            color: var(--color-blanco);
-            transform: scale(1.05);
-        }
-
-        .btn-unirse:disabled {
-            background-color: #1a0804;
-            color: #666;
-            cursor: not-allowed;
-        }
-
-        .btn-siguiente {
+        .btn-siguiente-main {
             background-color: var(--bg-tarjeta);
             color: var(--color-dorado);
             padding: 10px 25px;
@@ -156,7 +128,7 @@
             border: 2px solid #5a2412;
             margin-top: 30px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
         footer {
@@ -182,26 +154,26 @@
 
     <main>
         <div class="rooms-grid">
-            <div class="room-card">
+            <div class="room-card componente-tarjeta">
                 <img src="./imagenes/avatar1.jpg" alt="Avatar" class="avatar">
                 <div class="room-info">
                     <span class="user-name">MasterMiguel67</span>
                     <span class="spaces">ESPACIOS: 1/2</span>
-                    <button class="btn-unirse">UNIRSE</button>
+                    <button class="componente-boton">UNIRSE</button>
                 </div>
             </div>
 
-            <div class="room-card">
+            <div class="room-card componente-tarjeta">
                 <img src="./imagenes/avatar2.jpg" alt="Avatar" class="avatar">
                 <div class="room-info">
                     <span class="user-name">MyDarlingKano</span>
                     <span class="spaces">ESPACIOS: 2/2</span>
-                    <button class="btn-unirse" disabled>UNIRSE</button>
+                    <button class="componente-boton" disabled>UNIRSE</button>
                 </div>
             </div>
         </div>
 
-        <a href="#" class="btn-siguiente">SIGUIENTE ></a>
+        <a href="#" class="btn-siguiente-main">SIGUIENTE ></a>
     </main>
 
     <footer>
