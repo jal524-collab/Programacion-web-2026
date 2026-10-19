@@ -5,39 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartas - Yu-Gi-Oh! Templo de Duelo</title>
     <style>
-        * { box-sizing: border-box; }
-        body {
+        @font-face {
+            font-family: 'YuGiOhFont';
+            src: url('./fuentes/Matrix-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-principal: #8D3824;
+            --bg-header: rgba(60, 20, 10, 0.95);
+            --bg-tarjeta: #3c140a;
+            --border-tarjeta: #200803;
+            --color-dorado: #f3c653;
+            --color-texto-suave: #e0d0b0;
+            --color-blanco: #ffffff;
+            --fuente-principal: 'YuGiOhFont', Arial, sans-serif;
+            --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
             min-height: 100vh;
-            background-color: #8D3824;
-            color: #f3c653;
+            background-color: var(--bg-principal);
+            color: var(--color-dorado);
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: Arial, sans-serif;
+            font-family: var(--fuente-principal);
         }
 
         header {
             width: 100%;
-            background-color: rgba(60, 20, 10, 0.95);
+            background-color: var(--bg-header);
             padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #3c140a;
+            border-bottom: 2px solid var(--bg-tarjeta);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        .logo-nav { height: 45px; width: auto; }
+
+        .logo-nav {
+            height: 45px;
+            width: auto;
+        }
+
         nav a {
-            color: #f3c653;
+            color: var(--color-dorado);
             text-decoration: none;
             margin-left: 20px;
             font-weight: bold;
+            text-shadow: var(--sombra-texto);
+            transition: color 0.2s;
         }
-        nav a.active { color: #fff; text-decoration: underline; }
+
+        nav a.active, nav a:hover {
+            color: var(--color-blanco);
+            text-decoration: underline;
+        }
 
         main {
             width: 100%;
@@ -54,17 +88,22 @@
             width: 100%;
             margin-bottom: 20px;
         }
+
         .search-input {
             width: 100%;
             padding: 12px 20px;
             border-radius: 20px;
-            border: 2px solid #3c140a;
-            background-color: #3c140a;
-            color: #f3c653;
+            border: 2px solid var(--border-tarjeta);
+            background-color: var(--bg-tarjeta);
+            color: var(--color-dorado);
             font-size: 1rem;
             outline: none;
+            letter-spacing: 1px;
         }
-        .search-input::placeholder { color: #b8860b; }
+
+        .search-input::placeholder {
+            color: #b8860b;
+        }
 
         /* Lista de Cartas */
         .card-list {
@@ -75,8 +114,8 @@
         }
 
         .card-item {
-            background-color: #3c140a;
-            border: 3px solid #200803;
+            background-color: var(--bg-tarjeta);
+            border: 3px solid var(--border-tarjeta);
             padding: 15px;
             display: flex;
             gap: 20px;
@@ -102,35 +141,46 @@
             font-size: 1.3rem;
             font-weight: bold;
             margin: 0 0 5px 0;
-            color: #fff;
+            color: var(--color-blanco);
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
         }
 
         .card-desc {
             flex: 2;
             padding-left: 15px;
             font-size: 0.95rem;
-            line-height: 1.4;
+            line-height: 1.5;
+            color: var(--color-texto-suave);
         }
 
         /* Botón Siguiente */
         .btn-siguiente {
-            background-color: #3c140a;
-            color: #f3c653;
+            background-color: var(--bg-tarjeta);
+            color: var(--color-dorado);
             padding: 10px 25px;
             text-decoration: none;
             font-weight: bold;
             border: 2px solid #5a2412;
             margin-top: 25px;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
         }
-        .btn-siguiente:hover { background-color: #5a2412; color: #fff; }
+
+        .btn-siguiente:hover {
+            background-color: #5a2412;
+            color: var(--color-blanco);
+        }
 
         footer {
             width: 100%;
             padding: 15px;
             text-align: center;
             font-size: 0.9rem;
-            background-color: rgba(60, 20, 10, 0.95);
+            color: var(--color-dorado);
+            background-color: var(--bg-header);
         }
     </style>
 </head>
@@ -149,12 +199,10 @@
     </header>
 
     <main>
-        <!-- Buscador -->
         <div class="search-box">
             <input type="text" class="search-input" placeholder="🔍 BUSCAR CARTA">
         </div>
 
-        <!-- Cartas -->
         <div class="card-list">
             <!-- Carta 1 -->
             <div class="card-item">
