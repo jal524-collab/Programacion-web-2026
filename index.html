@@ -14,7 +14,26 @@
     <link rel="alternate" hreflang="en" href="https://www.yugiohtemplodeduelos.com/en/">
     
     <style>
-        /* 1. Selector universal (*) */
+        /* Definición de Variables CSS y @font-face */
+        @font-face {
+            font-family: 'YuGiOhFont';
+            src: url('./fuentes/Matrix-Bold.woff2') format('woff2'); /* Coloca aquí tu archivo de fuente local si lo tienes */
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-principal: #8D3824;
+            --bg-header: rgba(90, 40, 20, 0.95);
+            --color-dorado: #f3c653;
+            --color-marron-oscuro: #3c140a;
+            --color-texto-base: #4a2511;
+            --fuente-principal: 'YuGiOhFont', Arial, sans-serif;
+            --sombra-texto: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Selector universal (*) */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,24 +42,24 @@
 
         body {
             min-height: 100vh;
-            background-color: #8D3824;
-            color: #4a2511;
+            background-color: var(--bg-principal);
+            color: var(--color-texto-base);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            font-family: Arial, sans-serif;
+            font-family: var(--fuente-principal);
         }
 
         /* Barra de navegacion superior */
         header {
             width: 100%;
-            background-color: rgba(90, 40, 20, 0.95);
+            background-color: var(--bg-header);
             padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #3c140a;
+            border-bottom: 2px solid var(--color-marron-oscuro);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
@@ -53,12 +72,12 @@
         }
 
         nav a {
-            color: #f3c653;
+            color: var(--color-dorado);
             text-decoration: none;
             margin-left: 20px;
             font-weight: bold;
             font-size: 1rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            text-shadow: var(--sombra-texto);
             transition: color 0.2s;
         }
 
@@ -79,21 +98,22 @@
             flex-grow: 1;
         }
 
-        /* 2. Selector de tipo (h1) */
+        /* Selector de tipo (h1) con formato de texto avanzado */
         h1 {
             font-size: 3rem;
             margin-top: 10px;
             margin-bottom: 25px;
-            color: #3c140a;
+            color: var(--color-marron-oscuro);
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.4);
-            letter-spacing: 1px;
+            letter-spacing: 2px; /* Formato de texto: espaciado */
+            line-height: 1.2;    /* Formato de texto: altura de línea */
             text-align: center;
         }
 
-        /* 3. Selector de ID (#titulo-principal) */
+        /* Selector de ID (#titulo-principal) */
         #titulo-principal {
             font-weight: bold;
-            text-transform: uppercase;
+            text-transform: uppercase; /* Formato de texto: mayúsculas */
         }
 
         .main-logo {
@@ -127,11 +147,11 @@
             transform: scale(1.08);
         }
 
-        /* 4. Selector de clase (.btn-duelo) */
+        /* Selector de clase (.btn-duelo) con formato de texto */
         .btn-duelo {
             display: inline-block;
-            background-color: #3c140a;
-            color: #f3c653;
+            background-color: var(--color-marron-oscuro);
+            color: var(--color-dorado);
             padding: 14px 28px;
             font-size: 1.2rem;
             font-weight: bold;
@@ -139,7 +159,9 @@
             border-radius: 6px;
             border: 2px solid #5a2412;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            text-shadow: var(--sombra-texto);
+            text-transform: uppercase; /* Formato de texto */
+            letter-spacing: 1px;      /* Formato de texto */
             margin-top: 20px;
             transition: all 0.2s ease;
         }
@@ -157,9 +179,9 @@
             padding: 15px;
             text-align: center;
             font-size: 0.9rem;
-            color: #f3c653;
-            background-color: rgba(60, 20, 10, 0.95);
-            border-top: 1px solid #3c140a;
+            color: var(--color-dorado);
+            background-color: var(--bg-header);
+            border-top: 1px solid var(--color-marron-oscuro);
         }
 
         /* Responsivo para celulares */
@@ -205,7 +227,6 @@
 
     <!-- Contenido Principal -->
     <main>
-        <!-- Agregado id="titulo-principal" para cumplir con el selector de id -->
         <h1 id="titulo-principal">Yu-Gi-Oh! Templo de Duelo</h1>
         
         <!-- Imagen principal del logo -->
@@ -219,7 +240,7 @@
             <img src="./imagenes/monstruo4.png" alt="Monstruo de Yu-Gi-Oh!" class="monster-img">
         </div>
 
-        <!-- Boton de duelo troll -->
+        <!-- Boton de duelo -->
         <a href="https://www.youtube.com/shorts/3TBl4PWTpF0" target="_blank" rel="noopener noreferrer" class="btn-duelo">
             Unirse a un duelo
         </a>
