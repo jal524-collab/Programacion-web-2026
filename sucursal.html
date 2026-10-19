@@ -24,12 +24,41 @@
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        /* COMPONENTES REPETIBLES */
+        .componente-tarjeta {
+            background-color: var(--bg-tarjeta);
+            border: 3px solid #200803;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
         }
 
+        .componente-boton {
+            background-color: #5a2412;
+            color: var(--color-dorado);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-shadow: var(--sombra-texto);
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .componente-boton:hover {
+            color: var(--color-blanco);
+            transform: scale(1.05);
+            background-color: #702e17;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             min-height: 100vh;
             background-color: var(--bg-principal);
@@ -49,23 +78,9 @@
             align-items: center;
             border-bottom: 2px solid var(--bg-tarjeta);
         }
-
-        .logo-nav {
-            height: 45px;
-        }
-
-        nav a {
-            color: var(--color-dorado);
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            text-shadow: var(--sombra-texto);
-        }
-
-        nav a.active, nav a:hover {
-            color: var(--color-blanco);
-            text-decoration: underline;
-        }
+        .logo-nav { height: 45px; }
+        nav a { color: var(--color-dorado); text-decoration: none; margin-left: 20px; font-weight: bold; text-shadow: var(--sombra-texto); }
+        nav a.active, nav a:hover { color: var(--color-blanco); text-decoration: underline; }
 
         main {
             width: 100%;
@@ -78,61 +93,12 @@
             gap: 20px;
         }
 
-        .branch-card {
-            background-color: var(--bg-tarjeta);
-            border-radius: 25px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-        }
+        .branch-logo { width: 130px; height: 100px; object-fit: cover; border-radius: 8px; }
+        .branch-details { flex: 1; }
+        .branch-title { font-size: 1.3rem; margin: 0 0 8px 0; color: var(--color-dorado); letter-spacing: 1px; }
+        .branch-desc { font-size: 0.9rem; color: var(--color-texto-suave); margin: 0; line-height: 1.4; }
 
-        .branch-logo {
-            width: 130px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .branch-details {
-            flex: 1;
-        }
-
-        .branch-title {
-            font-size: 1.3rem;
-            margin: 0 0 8px 0;
-            color: var(--color-dorado);
-            letter-spacing: 1px;
-            text-transform: capitalize;
-        }
-
-        .branch-desc {
-            font-size: 0.9rem;
-            color: var(--color-texto-suave);
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .btn-info {
-            background-color: #5a2412;
-            color: var(--color-dorado);
-            border: none;
-            padding: 10px 24px;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-info:hover {
-            color: var(--color-blanco);
-            transform: scale(1.05);
-        }
-
-        .btn-siguiente {
+        .btn-siguiente-main {
             background-color: var(--bg-tarjeta);
             color: var(--color-dorado);
             padding: 10px 25px;
@@ -141,7 +107,7 @@
             border: 2px solid #5a2412;
             margin-top: 10px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
         footer {
@@ -166,25 +132,25 @@
     </header>
 
     <main>
-        <div class="branch-card">
+        <div class="branch-card componente-tarjeta">
             <img src="./imagenes/arcana.jpg" alt="Arcana" class="branch-logo">
             <div class="branch-details">
                 <h2 class="branch-title">Arcana Cartas & Juegos</h2>
                 <p class="branch-desc">Tienda de juegos en La Paz, BCS / Gamecenter / Trading Card Games, Cartas Coleccionables, Role-Playing Games, juegos de mesa y más...</p>
             </div>
-            <button class="btn-info">Info</button>
+            <button class="componente-boton">Info</button>
         </div>
 
-        <div class="branch-card">
+        <div class="branch-card componente-tarjeta">
             <img src="./imagenes/amazing.jpg" alt="Amazing Comics" class="branch-logo">
             <div class="branch-details">
                 <h2 class="branch-title">Amazing Comics & Books La Paz</h2>
                 <p class="branch-desc">Tienda de comics en La Paz, BCS / Comics, manga, libros, TCG, figuras. Hacemos pedidos especiales.</p>
             </div>
-            <button class="btn-info">Info</button>
+            <button class="componente-boton">Info</button>
         </div>
 
-        <a href="#" class="btn-siguiente">SIGUIENTE ></a>
+        <a href="#" class="btn-siguiente-main">SIGUIENTE ></a>
     </main>
 
     <footer>
