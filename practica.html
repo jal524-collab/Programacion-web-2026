@@ -3,107 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Práctica Bootstrap - Yu-Gi-Oh! Templo de Duelo</title>
-    <!-- Bootstrap 5 CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Yu-Gi-Oh Templo de Duelo</title>
+    <style>
+        @font-face {
+            font-family: 'YuGiOhFont';
+            src: url('./fuentes/Matrix-Bold.woff2') format('woff2');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --bg-principal: #8D3824;
+            --bg-header: rgba(90, 40, 20, 0.95);
+            --bg-tarjeta: #3c140a;
+            --color-dorado: #f3c653;
+            --color-texto-base: #4a2511;
+            --color-blanco: #ffffff;
+            --fuente-principal: 'YuGiOhFont', Arial, sans-serif;
+            --sombra-texto: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-principal);
+            color: var(--color-texto-base);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--fuente-principal);
+        }
+
+        /* BEM: Header */
+        .inicio-header {
+            width: 100%;
+            background-color: var(--bg-header);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--bg-tarjeta);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .inicio-header__logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        .inicio-header__nav-link {
+            color: var(--color-dorado);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-shadow: var(--sombra-texto);
+            transition: color 0.2s;
+        }
+
+        /* PSEUDOCLASE: :hover */
+        .inicio-header__nav-link:hover {
+            color: var(--color-blanco);
+            text-decoration: underline;
+        }
+
+        /* BEM: Main */
+        .inicio-main {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            flex-grow: 1;
+        }
+
+        .inicio-main__title {
+            font-size: 3rem;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            color: var(--bg-tarjeta);
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            line-height: 1.2;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        /* PSEUDOELEMENTO: ::after para decorar el título */
+        .inicio-main__title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background-color: var(--color-dorado);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .inicio-main__logo {
+            max-width: 450px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.3));
+        }
+
+        .inicio-main__monsters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0 30px 0;
+            width: 100%;
+        }
+
+        .inicio-main__monster-img {
+            max-height: 150px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .inicio-main__monster-img:hover {
+            transform: scale(1.08);
+        }
+
+        .inicio-main__btn {
+            background-color: var(--bg-tarjeta);
+            color: var(--color-dorado);
+            padding: 14px 28px;
+            border-radius: 8px;
+            border: 2px solid #5a2412;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .inicio-main__btn:hover {
+            background-color: #5a2412;
+            color: var(--color-blanco);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* BEM: Footer */
+        .inicio-footer {
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--color-dorado);
+            background-color: var(--bg-header);
+            border-top: 1px solid var(--bg-tarjeta);
+        }
+
+        /* Responsive para pantallas pequeñas (móviles) */
+        @media (max-width: 768px) {
+            .inicio-header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 10px;
+            }
+            .inicio-header nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+            .inicio-header__nav-link {
+                margin-left: 0;
+                font-size: 0.85rem;
+            }
+            .inicio-main__title {
+                font-size: 2.2rem;
+            }
+            .inicio-main__monster-img {
+                max-height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- 2. NAVBAR -->
-    <nav class="navbar navbar-expand-md bg-body-tertiary shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#">Yu-Gi-Oh! Templo de Duelo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">CARTAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">DUELOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">SUCURSAL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Registrarse / Iniciar sesión</a>
-                    </li>
-                </ul>
-            </div>
+    <header class="inicio-header">
+        <div>
+            <a href="index.html">
+                <img src="./imagenes/logo.png" alt="Yu-Gi-Oh! Templo de Duelo" class="inicio-header__logo-img">
+            </a>
         </div>
-    </nav>
+        <nav>
+            <a href="cartas.html" class="inicio-header__nav-link">CARTAS</a>
+            <a href="duelos.html" class="inicio-header__nav-link">DUELOS</a>
+            <a href="sucursal.html" class="inicio-header__nav-link">SUCURSAL</a>
+            <a href="registro.html" class="inicio-header__nav-link">Registrarse / Iniciar sesión</a>
+        </nav>
+    </header>
 
-    <main class="container my-5">
-        <h2 class="mb-4 text-center">Catálogo de Cartas y Registro</h2>
+    <main class="inicio-main">
+        <h1 class="inicio-main__title">Yu-Gi-Oh! Templo de Duelo</h1>
+        
+        <img src="./imagenes/logo.png" alt="Logotipo oficial" class="inicio-main__logo">
 
-        <!-- 3. TARJETAS -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3 mb-5">
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Kuriboh</h5>
-                        <p class="card-text">Descarta esta carta de tu mano para hacer que el daño de batalla sea 0.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Chica Maga Aspirante</h5>
-                        <p class="card-text">Aplica efectos en secuencia dependiendo del número de cartas en campo o Cementerio.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Mago Oscuro</h5>
-                        <p class="card-text">El lanzador de conjuros definitivo en cuanto a ataque y defensa.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title text-danger">Dragón Blanco de Ojos Azules</h5>
-                        <p class="card-text">Un dragón legendario de destrucción con un poder inigualable.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="inicio-main__monsters">
+            <img src="./imagenes/monstruo1.png" alt="Monstruo 1" class="inicio-main__monster-img">
+            <img src="./imagenes/monstruo2.png" alt="Monstruo 2" class="inicio-main__monster-img">
+            <img src="./imagenes/monstruo3.png" alt="Monstruo 3" class="inicio-main__monster-img">
+            <img src="./imagenes/monstruo4.png" alt="Monstruo 4" class="inicio-main__monster-img">
         </div>
 
-        <!-- 4. FORMULARIO -->
-        <section class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <div class="card p-4 shadow-sm">
-                    <h3 class="mb-3 text-center">Registro de Duelista</h3>
-                    <form>
-                        <div class="mb-3">
-                            <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
-                            <input type="text" class="form-control" id="nombreUsuario" placeholder="Ej. MasterMiguel67">
-                        </div>
-                        <div class="mb-3">
-                            <label for="correoUsuario" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="correoUsuario" placeholder="correo@ejemplo.com">
-                        </div>
-                        <div class="form-check mb-3">
-                            <input type="checkbox" class="form-check-input" id="terminosCheck">
-                            <label class="form-check-label" for="terminosCheck">Acepto los términos y condiciones del templo</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+        <a href="mantenimiento.html" class="inicio-main__btn">
+            Unirse a un duelo
+        </a>
     </main>
 
-    <footer class="bg-body-tertiary text-center py-3 mt-5 border-top">
-        <p class="mb-0 text-muted">&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
+    <footer class="inicio-footer">
+        <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
