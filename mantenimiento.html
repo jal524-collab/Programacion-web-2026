@@ -23,6 +23,32 @@
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
+        .componente-aviso {
+            background-color: var(--bg-tarjeta);
+            border: 3px solid #200803;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            color: var(--color-dorado);
+            font-size: 1.5rem;
+            line-height: 1.6;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .componente-aviso::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--color-dorado);
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
@@ -35,37 +61,45 @@
             font-family: var(--fuente-principal);
         }
 
-        /* --- BEM: Bloque Header --- */
+        /* HEADER MOBILE-FIRST CON FLEXBOX */
         .mantenimiento-header {
             width: 100%;
             background-color: var(--bg-header);
-            padding: 12px 30px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--bg-tarjeta);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .mantenimiento-header__logo {
-            height: 45px;
+        .mantenimiento-header__logo { height: 40px; }
+
+        .mantenimiento-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
         .mantenimiento-header__link {
             color: var(--color-dorado);
             text-decoration: none;
-            margin-left: 20px;
+            font-size: 0.9rem;
             font-weight: bold;
             text-shadow: var(--sombra-texto);
             transition: color 0.2s ease;
         }
 
-        /* 1. PSEUDOCLASE: :hover para los enlaces del menú */
         .mantenimiento-header__link:hover {
             color: var(--color-blanco);
             text-decoration: underline;
         }
 
-        /* --- BEM: Bloque Main --- */
-        .mantenimiento-main {
+        main {
             width: 100%;
             max-width: 800px;
             padding: 40px 20px;
@@ -76,35 +110,7 @@
             justify-content: center;
         }
 
-        /* --- BEM: Bloque Aviso --- */
-        .mantenimiento-aviso {
-            background-color: var(--bg-tarjeta);
-            border: 3px solid #200803;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            color: var(--color-dorado);
-            font-size: 1.5rem;
-            line-height: 1.6;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            position: relative; /* Necesario para posicionar el pseudoelemento */
-            overflow: hidden;
-        }
-
-        /* 2. PSEUDOELEMENTO: ::before para crear una línea decorativa superior */
-        .mantenimiento-aviso::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background-color: var(--color-dorado);
-        }
-
-        .mantenimiento-main__logo-small {
+        .main-logo-small {
             width: 250px;
             background-color: var(--bg-tarjeta);
             padding: 15px;
@@ -113,13 +119,27 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
-        /* --- BEM: Bloque Footer --- */
-        .mantenimiento-footer {
+        footer {
             width: 100%;
             padding: 15px;
             text-align: center;
             color: var(--color-dorado);
             background-color: var(--bg-header);
+        }
+
+        /* BREAKPOINT PARA ESCRITORIO (min-width: 820px) */
+        @media (min-width: 820px) {
+            .mantenimiento-header {
+                flex-direction: row;
+                padding: 12px 30px;
+            }
+            .mantenimiento-header__logo { height: 45px; }
+            .mantenimiento-header nav {
+                gap: 20px;
+            }
+            .mantenimiento-header__link {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -135,16 +155,16 @@
         </nav>
     </header>
 
-    <main class="mantenimiento-main">
-        <div class="mantenimiento-aviso">
+    <main>
+        <div class="componente-aviso">
             Lo sentimos, el modo duelos aleatorio está de momento en mantenimiento.<br>
             Por favor vuelva a la página principal o entre al menú de <strong>DUELOS</strong>.
         </div>
 
-        <img src="./imagenes/logo.png" alt="Yu-Gi-Oh! Templo de Duelos" class="mantenimiento-main__logo-small">
+        <img src="./imagenes/logo.png" alt="Yu-Gi-Oh! Templo de Duelos" class="main-logo-small">
     </main>
 
-    <footer class="mantenimiento-footer">
+    <footer>
         <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
     </footer>
 
