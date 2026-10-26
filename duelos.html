@@ -36,32 +36,46 @@
             font-family: var(--fuente-principal);
         }
 
-        /* BEM: Header */
+        /* HEADER MOBILE-FIRST CON FLEXBOX */
         .duelos-header {
             width: 100%;
             background-color: var(--bg-header);
-            padding: 12px 30px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 10px;
             border-bottom: 2px solid var(--bg-tarjeta);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .duelos-header__logo { height: 45px; }
+
+        .duelos-header__logo { height: 40px; }
+
+        .duelos-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
         .duelos-header__link {
             color: var(--color-dorado);
             text-decoration: none;
-            margin-left: 20px;
+            font-size: 0.9rem;
             font-weight: bold;
             text-shadow: var(--sombra-texto);
             transition: color 0.2s ease;
         }
-        /* PSEUDOCLASE: :hover */
-        .duelos-header__link:hover, .duelos-header__link.active {
+
+        .duelos-header__link:hover, 
+        .duelos-header__link.active {
             color: var(--color-blanco);
             text-decoration: underline;
         }
 
-        /* BEM: Main */
+        /* MAIN Y CONTENIDO */
         .duelos-main {
             width: 100%;
             max-width: 900px;
@@ -74,12 +88,11 @@
 
         .duelos-main__grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             width: 100%;
         }
 
-        /* BEM: Tarjeta de sala */
         .room-card {
             background-color: var(--bg-tarjeta);
             border: 3px solid #200803;
@@ -94,7 +107,6 @@
             overflow: hidden;
         }
 
-        /* PSEUDOELEMENTO: ::before para una línea decorativa lateral */
         .room-card::before {
             content: '';
             position: absolute;
@@ -106,8 +118,8 @@
         }
 
         .room-card__avatar {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #5a2412;
@@ -117,7 +129,6 @@
         .room-card__name { font-size: 1.1rem; font-weight: bold; color: var(--color-dorado); letter-spacing: 0.5px; }
         .room-card__spaces { font-size: 0.9rem; color: var(--color-texto-suave); letter-spacing: 1px; text-transform: uppercase; }
 
-        /* Botón de unirse redirigido a mantenimiento.html */
         .room-card__btn {
             background-color: #5a2412;
             color: var(--color-dorado);
@@ -162,13 +173,27 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
-        /* BEM: Footer */
         .duelos-footer {
             width: 100%;
             padding: 15px;
             text-align: center;
             color: var(--color-dorado);
             background-color: var(--bg-header);
+        }
+
+        /* BREAKPOINT PARA ESCRITORIO (min-width: 820px) */
+        @media (min-width: 820px) {
+            .duelos-header {
+                flex-direction: row;
+                padding: 12px 30px;
+            }
+            .duelos-header__logo { height: 45px; }
+            .duelos-header nav {
+                gap: 20px;
+            }
+            .duelos-header__link {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -191,7 +216,6 @@
                 <div class="room-card__info">
                     <span class="room-card__name">MasterMiguel67</span>
                     <span class="room-card__spaces">ESPACIOS: 1/2</span>
-                    <!-- Redirige directo a mantenimiento.html -->
                     <a href="mantenimiento.html" class="room-card__btn">UNIRSE</a>
                 </div>
             </div>
