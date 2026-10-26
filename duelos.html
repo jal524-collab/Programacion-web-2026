@@ -24,8 +24,63 @@
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        /* COMPONENTES REPETIBLES */
-        .componente-tarjeta {
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-principal);
+            color: var(--color-dorado);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: var(--fuente-principal);
+        }
+
+        /* BEM: Header */
+        .duelos-header {
+            width: 100%;
+            background-color: var(--bg-header);
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--bg-tarjeta);
+        }
+        .duelos-header__logo { height: 45px; }
+        .duelos-header__link {
+            color: var(--color-dorado);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            text-shadow: var(--sombra-texto);
+            transition: color 0.2s ease;
+        }
+        /* PSEUDOCLASE: :hover */
+        .duelos-header__link:hover, .duelos-header__link.active {
+            color: var(--color-blanco);
+            text-decoration: underline;
+        }
+
+        /* BEM: Main */
+        .duelos-main {
+            width: 100%;
+            max-width: 900px;
+            padding: 30px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .duelos-main__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* BEM: Tarjeta de sala */
+        .room-card {
             background-color: var(--bg-tarjeta);
             border: 3px solid #200803;
             border-radius: 20px;
@@ -35,9 +90,35 @@
             align-items: center;
             gap: 20px;
             width: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .componente-boton {
+        /* PSEUDOELEMENTO: ::before para una línea decorativa lateral */
+        .room-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: var(--color-dorado);
+        }
+
+        .room-card__avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #5a2412;
+        }
+
+        .room-card__info { display: flex; flex-direction: column; gap: 8px; }
+        .room-card__name { font-size: 1.1rem; font-weight: bold; color: var(--color-dorado); letter-spacing: 0.5px; }
+        .room-card__spaces { font-size: 0.9rem; color: var(--color-texto-suave); letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Botón de unirse redirigido a mantenimiento.html */
+        .room-card__btn {
             background-color: #5a2412;
             color: var(--color-dorado);
             padding: 8px 18px;
@@ -50,76 +131,26 @@
             text-decoration: none;
             cursor: pointer;
             letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
             transition: all 0.2s ease;
         }
 
-        .componente-boton:hover:not(:disabled) {
+        .room-card__btn:hover {
             color: var(--color-blanco);
             transform: scale(1.05);
             background-color: #702e17;
         }
 
-        .componente-boton:disabled {
+        .room-card__btn--disabled {
             background-color: #1a0804;
             color: #666;
             cursor: not-allowed;
             box-shadow: none;
+            pointer-events: none;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            min-height: 100vh;
-            background-color: var(--bg-principal);
-            color: var(--color-dorado);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: var(--fuente-principal);
-        }
-
-        header {
-            width: 100%;
-            background-color: var(--bg-header);
-            padding: 12px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--bg-tarjeta);
-        }
-        .logo-nav { height: 45px; }
-        nav a { color: var(--color-dorado); text-decoration: none; margin-left: 20px; font-weight: bold; text-shadow: var(--sombra-texto); }
-        nav a.active, nav a:hover { color: var(--color-blanco); text-decoration: underline; }
-
-        main {
-            width: 100%;
-            max-width: 900px;
-            padding: 30px 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .rooms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
-
-        .avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #5a2412;
-        }
-
-        .room-info { display: flex; flex-direction: column; gap: 8px; }
-        .user-name { font-size: 1.1rem; font-weight: bold; color: var(--color-dorado); letter-spacing: 0.5px; }
-        .spaces { font-size: 0.9rem; color: var(--color-texto-suave); letter-spacing: 1px; text-transform: uppercase; }
-
-        .btn-siguiente-main {
+        .duelos-main__btn-siguiente {
             background-color: var(--bg-tarjeta);
             color: var(--color-dorado);
             padding: 10px 25px;
@@ -131,7 +162,8 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
         }
 
-        footer {
+        /* BEM: Footer */
+        .duelos-footer {
             width: 100%;
             padding: 15px;
             text-align: center;
@@ -142,41 +174,42 @@
 </head>
 <body>
 
-    <header>
-        <a href="index.html"><img src="./imagenes/logo.png" alt="Yu-Gi-Oh!" class="logo-nav"></a>
+    <header class="duelos-header">
+        <a href="index.html"><img src="./imagenes/logo.png" alt="Yu-Gi-Oh!" class="duelos-header__logo"></a>
         <nav>
-            <a href="cartas.html">CARTAS</a>
-            <a href="duelos.html" class="active">DUELOS</a>
-            <a href="sucursal.html">SUCURSAL</a>
-            <a href="registro.html">Registrarse / Iniciar sesión</a>
+            <a href="cartas.html" class="duelos-header__link">CARTAS</a>
+            <a href="duelos.html" class="duelos-header__link active">DUELOS</a>
+            <a href="sucursal.html" class="duelos-header__link">SUCURSAL</a>
+            <a href="registro.html" class="duelos-header__link">Registrarse / Iniciar sesión</a>
         </nav>
     </header>
 
-    <main>
-        <div class="rooms-grid">
-            <div class="room-card componente-tarjeta">
-                <img src="./imagenes/avatar1.jpg" alt="Avatar" class="avatar">
-                <div class="room-info">
-                    <span class="user-name">MasterMiguel67</span>
-                    <span class="spaces">ESPACIOS: 1/2</span>
-                    <button class="componente-boton">UNIRSE</button>
+    <main class="duelos-main">
+        <div class="duelos-main__grid">
+            <div class="room-card">
+                <img src="./imagenes/avatar1.jpg" alt="Avatar" class="room-card__avatar">
+                <div class="room-card__info">
+                    <span class="room-card__name">MasterMiguel67</span>
+                    <span class="room-card__spaces">ESPACIOS: 1/2</span>
+                    <!-- Redirige directo a mantenimiento.html -->
+                    <a href="mantenimiento.html" class="room-card__btn">UNIRSE</a>
                 </div>
             </div>
 
-            <div class="room-card componente-tarjeta">
-                <img src="./imagenes/avatar2.jpg" alt="Avatar" class="avatar">
-                <div class="room-info">
-                    <span class="user-name">MyDarlingKano</span>
-                    <span class="spaces">ESPACIOS: 2/2</span>
-                    <button class="componente-boton" disabled>UNIRSE</button>
+            <div class="room-card">
+                <img src="./imagenes/avatar2.jpg" alt="Avatar" class="room-card__avatar">
+                <div class="room-card__info">
+                    <span class="room-card__name">MyDarlingKano</span>
+                    <span class="room-card__spaces">ESPACIOS: 2/2</span>
+                    <a href="#" class="room-card__btn room-card__btn--disabled">UNIRSE</a>
                 </div>
             </div>
         </div>
 
-        <a href="#" class="btn-siguiente-main">SIGUIENTE ></a>
+        <a href="#" class="duelos-main__btn-siguiente">SIGUIENTE ></a>
     </main>
 
-    <footer>
+    <footer class="duelos-footer">
         <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
     </footer>
 
