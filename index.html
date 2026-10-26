@@ -37,14 +37,15 @@
             font-family: var(--fuente-principal);
         }
 
-        /* BEM: Header */
+        /* HEADER MOBILE-FIRST CON FLEXBOX */
         .inicio-header {
             width: 100%;
             background-color: var(--bg-header);
-            padding: 12px 30px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: 10px;
             border-bottom: 2px solid var(--bg-tarjeta);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             position: sticky;
@@ -53,27 +54,32 @@
         }
 
         .inicio-header__logo-img {
-            height: 45px;
+            height: 40px;
             width: auto;
+        }
+
+        .inicio-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
         .inicio-header__nav-link {
             color: var(--color-dorado);
             text-decoration: none;
-            margin-left: 20px;
+            font-size: 0.9rem;
             font-weight: bold;
-            font-size: 1rem;
             text-shadow: var(--sombra-texto);
             transition: color 0.2s;
         }
 
-        /* PSEUDOCLASE: :hover */
         .inicio-header__nav-link:hover {
             color: var(--color-blanco);
             text-decoration: underline;
         }
 
-        /* BEM: Main */
+        /* MAIN */
         .inicio-main {
             width: 100%;
             max-width: 1000px;
@@ -98,7 +104,6 @@
             position: relative;
         }
 
-        /* PSEUDOELEMENTO: ::after para decorar el título */
         .inicio-main__title::after {
             content: '';
             display: block;
@@ -162,7 +167,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
         }
 
-        /* BEM: Footer */
+        /* FOOTER */
         .inicio-footer {
             width: 100%;
             padding: 15px;
@@ -171,6 +176,32 @@
             color: var(--color-dorado);
             background-color: var(--bg-header);
             border-top: 1px solid var(--bg-tarjeta);
+        }
+
+        /* BREAKPOINT PARA ESCRITORIO (min-width: 820px) */
+        @media (min-width: 820px) {
+            .inicio-header {
+                flex-direction: row;
+                padding: 12px 30px;
+            }
+            .inicio-header__logo-img {
+                height: 45px;
+            }
+            .inicio-header nav {
+                gap: 20px;
+            }
+            .inicio-header__nav-link {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .inicio-main__title {
+                font-size: 2.2rem;
+            }
+            .inicio-main__monster-img {
+                max-height: 100px;
+            }
         }
     </style>
 </head>
@@ -202,7 +233,6 @@
             <img src="./imagenes/monstruo4.png" alt="Monstruo 4" class="inicio-main__monster-img">
         </div>
 
-        <!-- Enlace actualizado directo a la página de mantenimiento sin YouTube -->
         <a href="mantenimiento.html" class="inicio-main__btn">
             Unirse a un duelo
         </a>
