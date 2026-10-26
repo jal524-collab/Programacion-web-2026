@@ -13,6 +13,7 @@
             font-display: swap;
         }
 
+        /* 1. EXTENSIÓN DE VARIABLES CSS */
         :root {
             --bg-principal: #8D3824;
             --bg-header: rgba(60, 20, 10, 0.95);
@@ -22,17 +23,23 @@
             --color-blanco: #ffffff;
             --fuente-principal: 'YuGiOhFont', Arial, sans-serif;
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
+            
+            /* Nuevas variables de espaciado y tamaños repetidos */
+            --espaciado-sm: 10px;
+            --espaciado-md: 20px;
+            --espaciado-lg: 30px;
+            --radio-borde: 16px;
+            --radio-borde-lg: 24px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* Estilos base (Mobile First - por defecto para 390px y pantallas móviles) */
         body {
             min-height: 100vh;
             background-color: var(--bg-principal);
             color: var(--color-dorado);
             font-family: var(--fuente-principal);
-            
-            /* 3. LAYOUT GENERAL CON GRID-TEMPLATE-AREAS */
             display: grid;
             grid-template-areas: 
                 "header"
@@ -41,15 +48,16 @@
             grid-template-rows: auto 1fr auto;
         }
 
-        /* 1. NAVBAR CON FLEXBOX */
+        /* Navbar con Flexbox */
         .cartas-header {
             grid-area: header;
             width: 100%;
             background-color: var(--bg-header);
-            padding: 12px 30px;
+            padding: var(--espaciado-sm) var(--espaciado-md);
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            gap: var(--espaciado-sm);
             border-bottom: 2px solid var(--bg-tarjeta);
             position: sticky;
             top: 0;
@@ -57,19 +65,21 @@
         }
 
         .cartas-header__logo-nav { 
-            height: 45px; 
+            height: 40px; 
             width: auto; 
         }
 
         .cartas-header__nav {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--espaciado-sm);
         }
 
         .cartas-header__nav a {
             color: var(--color-dorado);
             text-decoration: none;
-            margin-left: 20px;
+            font-size: 0.9rem;
             font-weight: bold;
             text-shadow: var(--sombra-texto);
         }
@@ -80,13 +90,13 @@
             text-decoration: underline; 
         }
 
-        /* LAYOUT MAIN */
+        /* Layout Main */
         .cartas-main {
             grid-area: main;
             width: 100%;
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: var(--espaciado-md);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -94,69 +104,67 @@
 
         .search-box { 
             width: 100%; 
-            margin-bottom: 20px; 
+            margin-bottom: var(--espaciado-md); 
         }
 
         .search-input {
             width: 100%;
-            padding: 12px 20px;
-            border-radius: 20px;
+            padding: 12px var(--espaciado-md);
+            border-radius: var(--radio-borde);
             border: 2px solid #200803;
             background-color: var(--bg-tarjeta);
             color: var(--color-dorado);
             font-size: 1rem;
             outline: none;
-            letter-spacing: 1px;
         }
 
         .search-input::placeholder { color: #b8860b; }
 
-        /* 2. LISTADO DE TARJETAS CON FLEX-WRAP, GAP Y FLEX: 1 1 (SIN MÁRGENES MANUALES) */
+        /* Listado de tarjetas (Flexbox interno usando variables) */
         .card-list { 
             display: flex; 
             flex-wrap: wrap; 
-            gap: 15px; 
+            gap: var(--espaciado-md); 
             width: 100%; 
         }
 
         .componente-tarjeta {
             background-color: var(--bg-tarjeta);
             border: 3px solid #200803;
-            border-radius: 16px;
-            padding: 20px;
+            border-radius: var(--radio-borde);
+            padding: var(--espaciado-md);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
-            flex: 1 1 100%; /* Ocupa el ancho disponible sin usar márgenes */
+            gap: var(--espaciado-sm);
+            flex: 1 1 100%;
         }
 
         .card-img { 
-            width: 140px; 
+            width: 120px; 
             height: auto; 
             border-radius: 4px; 
         }
 
         .card-info { 
-            flex: 1; 
+            width: 100%;
             display: flex; 
             flex-direction: column; 
             gap: 5px; 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             line-height: 1.4; 
         }
 
         .card-title { 
-            font-size: 1.3rem; 
+            font-size: 1.2rem; 
             font-weight: bold; 
-            margin: 0 0 5px 0; 
             color: var(--color-blanco); 
         }
 
         .card-desc { 
-            flex: 2; 
-            padding-left: 15px; 
-            font-size: 0.95rem; 
+            width: 100%;
+            font-size: 0.9rem; 
             line-height: 1.5; 
             color: var(--color-texto-suave); 
         }
@@ -164,35 +172,82 @@
         .componente-boton {
             background-color: #3c140a;
             color: var(--color-dorado);
-            padding: 12px 24px;
-            border-radius: 8px;
+            padding: 10px var(--espaciado-md);
+            border-radius: var(--radio-borde);
             border: 2px solid #5a2412;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            text-shadow: var(--sombra-texto);
             font-weight: bold;
             text-transform: uppercase;
             text-decoration: none;
             display: inline-block;
-            letter-spacing: 1px;
+            text-align: center;
             transition: all 0.2s ease;
         }
 
-        .componente-boton:hover {
-            background-color: #5a2412;
-            color: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* FOOTER */
         .cartas-footer {
             grid-area: footer;
             width: 100%;
-            padding: 15px;
+            padding: var(--espaciado-md);
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--color-dorado);
             background-color: var(--bg-header);
+        }
+
+        /* 3. BREAKPOINT 1: TABLET (min-width: 820px) */
+        @media (min-width: 820px) {
+            .cartas-header {
+                flex-direction: row;
+                padding: var(--espaciado-sm) var(--espaciado-lg);
+            }
+
+            .cartas-header__logo-nav {
+                height: 45px;
+            }
+
+            .cartas-header__nav {
+                gap: var(--espaciado-md);
+            }
+
+            .cartas-header__nav a {
+                font-size: 1rem;
+            }
+
+            .cartas-main {
+                max-width: 800px;
+                padding: var(--espaciado-lg);
+            }
+
+            .componente-tarjeta {
+                flex-direction: row;
+                align-items: center;
+                gap: var(--espaciado-md);
+                border-radius: var(--radio-borde-lg);
+                padding: var(--espaciado-lg);
+            }
+
+            .card-img {
+                width: 140px;
+            }
+
+            .card-info {
+                flex: 1;
+            }
+
+            .card-desc {
+                flex: 2;
+                padding-left: var(--espaciado-sm);
+            }
+        }
+
+        /* 3. BREAKPOINT 2: ESCRITORIO (min-width: 1280px) */
+        @media (min-width: 1280px) {
+            .cartas-main {
+                max-width: 1100px;
+            }
+
+            .componente-tarjeta {
+                flex: 1 1 calc(50% - var(--espaciado-md)); /* Dos columnas de tarjetas en escritorio */
+            }
         }
     </style>
 </head>
@@ -214,8 +269,7 @@
         </div>
 
         <section class="card-list">
-            <!-- Carta 1 -->
-            article class="card-item componente-tarjeta">
+            <article class="componente-tarjeta">
                 <img src="./imagenes/kuriboh.png" alt="Kuriboh" class="card-img">
                 <div class="card-info">
                     <h2 class="card-title">Kuriboh</h2>
@@ -229,8 +283,7 @@
                 </div>
             </article>
 
-            <!-- Carta 2 -->
-            <article class="card-item componente-tarjeta">
+            <article class="componente-tarjeta">
                 <img src="./imagenes/chica_maga.png" alt="Chica Maga Aspirante" class="card-img">
                 <div class="card-info">
                     <h2 class="card-title">Chica Maga Aspirante</h2>
