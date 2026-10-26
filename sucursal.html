@@ -24,7 +24,69 @@
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        /* COMPONENTES REPETIBLES */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            background-color: var(--bg-principal);
+            color: var(--color-dorado);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: var(--fuente-principal);
+        }
+
+        /* HEADER MOBILE-FIRST CON FLEXBOX */
+        .sucursal-header {
+            width: 100%;
+            background-color: var(--bg-header);
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--bg-tarjeta);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .sucursal-header__logo { height: 40px; }
+
+        .sucursal-header nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sucursal-header__link {
+            color: var(--color-dorado);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-shadow: var(--sombra-texto);
+            transition: color 0.2s ease;
+        }
+
+        .sucursal-header__link:hover, 
+        .sucursal-header__link.active {
+            color: var(--color-blanco);
+            text-decoration: underline;
+        }
+
+        /* MAIN Y CONTENIDO */
+        .sucursal-main {
+            width: 100%;
+            max-width: 900px;
+            padding: 30px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
         .componente-tarjeta {
             background-color: var(--bg-tarjeta);
             border: 3px solid #200803;
@@ -58,41 +120,6 @@
             background-color: #702e17;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            min-height: 100vh;
-            background-color: var(--bg-principal);
-            color: var(--color-dorado);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: var(--fuente-principal);
-        }
-
-        header {
-            width: 100%;
-            background-color: var(--bg-header);
-            padding: 12px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--bg-tarjeta);
-        }
-        .logo-nav { height: 45px; }
-        nav a { color: var(--color-dorado); text-decoration: none; margin-left: 20px; font-weight: bold; text-shadow: var(--sombra-texto); }
-        nav a.active, nav a:hover { color: var(--color-blanco); text-decoration: underline; }
-
-        main {
-            width: 100%;
-            max-width: 900px;
-            padding: 30px 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
         .branch-logo { width: 130px; height: 100px; object-fit: cover; border-radius: 8px; }
         .branch-details { flex: 1; }
         .branch-title { font-size: 1.3rem; margin: 0 0 8px 0; color: var(--color-dorado); letter-spacing: 1px; }
@@ -117,21 +144,36 @@
             color: var(--color-dorado);
             background-color: var(--bg-header);
         }
+
+        /* BREAKPOINT PARA ESCRITORIO (min-width: 820px) */
+        @media (min-width: 820px) {
+            .sucursal-header {
+                flex-direction: row;
+                padding: 12px 30px;
+            }
+            .sucursal-header__logo { height: 45px; }
+            .sucursal-header nav {
+                gap: 20px;
+            }
+            .sucursal-header__link {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="index.html"><img src="./imagenes/logo.png" alt="Yu-Gi-Oh!" class="logo-nav"></a>
+    <header class="sucursal-header">
+        <a href="index.html"><img src="./imagenes/logo.png" alt="Yu-Gi-Oh!" class="sucursal-header__logo"></a>
         <nav>
-            <a href="cartas.html">CARTAS</a>
-            <a href="duelos.html">DUELOS</a>
-            <a href="sucursal.html" class="active">SUCURSAL</a>
-            <a href="registro.html">Registrarse / Iniciar sesión</a>
+            <a href="cartas.html" class="sucursal-header__link">CARTAS</a>
+            <a href="duelos.html" class="sucursal-header__link">DUELOS</a>
+            <a href="sucursal.html" class="sucursal-header__link active">SUCURSAL</a>
+            <a href="registro.html" class="sucursal-header__link">Registrarse / Iniciar sesión</a>
         </nav>
     </header>
 
-    <main>
+    <main class="sucursal-main">
         <div class="branch-card componente-tarjeta">
             <img src="./imagenes/arcana.jpg" alt="Arcana" class="branch-logo">
             <div class="branch-details">
