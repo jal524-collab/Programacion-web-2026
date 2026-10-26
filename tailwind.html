@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Tailwind - Yu-Gi-Oh! Templo de Duelo</title>
+    <!-- Script de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media', // Emula prefers-color-scheme automáticamente según el sistema
+        }
+    </script>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Navbar -->
+    <nav class="flex items-center justify-between border-b px-6 py-3 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-sm">
+        <a href="#" class="font-bold text-lg tracking-wider">Yu-Gi-Oh! Templo de Duelo</a>
+        <div class="flex gap-6 text-sm font-semibold">
+            <a href="#" class="hover:underline">CARTAS</a>
+            <a href="#" class="hover:underline">DUELOS</a>
+            <a href="#" class="hover:underline">SUCURSAL</a>
+            <a href="#" class="hover:underline">Iniciar sesión</a>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-6 py-8 flex-grow">
+        <h2 class="text-2xl font-bold mb-6 text-center">Catálogo de Cartas</h2>
+
+        <!-- Tarjetas -->
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded border p-4 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-sm">
+                <h3 class="font-bold text-lg mb-2 text-amber-600 dark:text-amber-400">Kuriboh</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Descarta esta carta de tu mano para hacer que el daño de batalla sea 0.</p>
+            </div>
+            <div class="rounded border p-4 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-sm">
+                <h3 class="font-bold text-lg mb-2 text-amber-600 dark:text-amber-400">Chica Maga Aspirante</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Aplica efectos en secuencia dependiendo del número de cartas en campo.</p>
+            </div>
+            <div class="rounded border p-4 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-sm">
+                <h3 class="font-bold text-lg mb-2 text-amber-600 dark:text-amber-400">Mago Oscuro</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">El lanzador de conjuros definitivo en cuanto a ataque y defensa.</p>
+            </div>
+            <div class="rounded border p-4 bg-white dark:bg-slate-800 dark:border-slate-700 shadow-sm">
+                <h3 class="font-bold text-lg mb-2 text-amber-600 dark:text-amber-400">Ojos Azules</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300">Un dragón legendario de destrucción con un poder inigualable.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t px-6 py-4 text-center text-sm bg-white dark:bg-slate-800 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+        &copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
