@@ -24,7 +24,6 @@
             --sombra-texto: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        /* COMPONENTES REPETIBLES */
         .componente-tarjeta {
             background-color: var(--bg-tarjeta);
             border: 3px solid #200803;
@@ -51,6 +50,8 @@
             display: inline-block;
             letter-spacing: 1px;
             transition: all 0.2s ease;
+            cursor: pointer;
+            font-family: var(--fuente-principal);
         }
 
         .componente-boton:hover {
@@ -119,7 +120,7 @@
 
         .card-list { display: flex; flex-direction: column; gap: 15px; width: 100%; }
 
-        .card-img { width: 140px; height: auto; border-radius: 4px; }
+        .card-img { width: 140px; height: auto; border-radius: 4px; object-fit: contain; }
         .card-info { flex: 1; display: flex; flex-direction: column; gap: 5px; font-size: 0.95rem; line-height: 1.4; }
         .card-title { font-size: 1.3rem; font-weight: bold; margin: 0 0 5px 0; color: var(--color-blanco); }
         .card-desc { flex: 2; padding-left: 15px; font-size: 0.95rem; line-height: 1.5; color: var(--color-texto-suave); }
@@ -151,44 +152,141 @@
             <input type="text" class="search-input" placeholder="🔍 BUSCAR CARTA">
         </div>
 
-        <div class="card-list">
-            <!-- Carta 1 -->
-            <div class="card-item componente-tarjeta">
-                <img src="./imagenes/kuriboh.png" alt="Kuriboh" class="card-img">
-                <div class="card-info">
-                    <h2 class="card-title">Kuriboh</h2>
-                    <div><strong>Tipo:</strong> Oscuridad</div>
-                    <div><strong>Nivel:</strong> 1</div>
-                    <div>Demonio/Efecto</div>
-                    <div><strong>ATK:</strong> 300 <strong>DEF:</strong> 200</div>
-                </div>
-                <div class="card-desc">
-                    Descarta esta carta de tu mano para hacer que el daño de batalla infligido por 1 monstruo de tu adversario a tus puntos de vida sea 0.
-                </div>
-            </div>
+        <!-- Contenedor dinámico de las 4 cartas por página -->
+        <div class="card-list" id="lista-cartas"></div>
 
-            <!-- Carta 2 -->
-            <div class="card-item componente-tarjeta">
-                <img src="./imagenes/maga_oscura.png" alt="Chica Maga Aspirante" class="card-img">
-                <div class="card-info">
-                    <h2 class="card-title">Chica Maga Aspirante</h2>
-                    <div><strong>Tipo:</strong> Oscuridad</div>
-                    <div><strong>Nivel:</strong> 1</div>
-                    <div>Lanzador de Conjuros/Efecto</div>
-                    <div><strong>ATK:</strong> 500 <strong>DEF:</strong> 200</div>
-                </div>
-                <div class="card-desc">
-                    Cuando esta carta es Invocada: aplica estos efectos, en secuencia, dependiendo del número de "Chica Maga Oscura" en tu lado del campo o Cementerio...
-                </div>
-            </div>
-        </div>
-
-        <a href="#" class="componente-boton" style="margin-top: 25px;">SIGUIENTE ></a>
+        <button id="btn-siguiente-cartas" class="componente-boton" style="margin-top: 25px;">SIGUIENTE &gt;</button>
     </main>
 
     <footer>
         <p>&copy; 2026 Yu-Gi-Oh! Templo de Duelo. Todos los derechos reservados.</p>
     </footer>
 
+    <script>
+        // Listado dividido en páginas de 4 cartas cada una con las nuevas imágenes
+        const paginasCartas = [
+            // Página 1 (4 cartas)
+            [
+                {
+                    nombre: "Kuriboh",
+                    tipo: "Oscuridad",
+                    nivel: "1",
+                    detalles: "Demonio/Efecto",
+                    atk: "300",
+                    def: "200",
+                    desc: "Descarta esta carta de tu mano para hacer que el daño de batalla infligido por 1 monstruo de tu adversario a tus puntos de vida sea 0.",
+                    imagen: "./imagenes/kuriboh.png"
+                },
+                {
+                    nombre: "Chica Maga Aspirante",
+                    tipo: "Oscuridad",
+                    nivel: "1",
+                    detalles: "Lanzador de Conjuros/Efecto",
+                    atk: "500",
+                    def: "200",
+                    desc: "Cuando esta carta es Invocada: aplica estos efectos, en secuencia, dependiendo del número de 'Chica Maga Oscura' en tu lado del campo o Cementerio...",
+                    imagen: "./imagenes/maga_oscura.png"
+                },
+                {
+                    nombre: "Mago Oscuro",
+                    tipo: "Oscuridad",
+                    nivel: "7",
+                    detalles: "Lanzador de Conjuros",
+                    atk: "2500",
+                    def: "2100",
+                    desc: "El lanzador de conjuros definitivo en cuanto a ataque y defensa se refiere.",
+                    imagen: "Mago_oscuro.png"
+                },
+                {
+                    nombre: "Dragón Blanco de Ojos Azules",
+                    tipo: "Luz",
+                    nivel: "8",
+                    detalles: "Dragón",
+                    atk: "3000",
+                    def: "2500",
+                    desc: "Un dragón legendario de destrucción. Potente de forma innata, muy pocos han visto esta criatura y han vivido para contarlo.",
+                    imagen: "Dragon_blanco_ojos_azules.png"
+                }
+            ],
+            // Página 2 (4 cartas adicionales)
+            [
+                {
+                    nombre: "Mago del Tiempo",
+                    tipo: "Luz",
+                    nivel: "2",
+                    detalles: "Lanzador de Conjuros/Efecto",
+                    atk: "500",
+                    def: "400",
+                    desc: "Una vez por turno: puedes lanzar una moneda y elegir Cara o Cruz. Si aciertas, destruye todos los monstruos que controle tu adversario.",
+                    imagen: "Mago_tiempo.jpg"
+                },
+                {
+                    nombre: "Cráneo Convocado",
+                    tipo: "Oscuridad",
+                    nivel: "6",
+                    detalles: "Demonio",
+                    atk: "2500",
+                    def: "1200",
+                    desc: "Un demonio con poderes oscuros para confundir al enemigo. Entre los monstruos de Tipo Demonio, este monstruo alardea de considerable fuerza.",
+                    imagen: "Craneo_suma.jpg"
+                },
+                {
+                    nombre: "Guerrero de Pizarra",
+                    tipo: "Viento",
+                    nivel: "4",
+                    detalles: "Demonio / Efecto",
+                    atk: "1900",
+                    def: "400",
+                    desc: "VOLTEO: Esta carta gana 500 ATK y DEF. Si esta carta es destruida en batalla: el monstruo que la destruyó pierde 500 ATK y DEF.",
+                    imagen: "Guerrero_de_pizarra.jpg"
+                },
+                {
+                    nombre: "Dragón Negro de Ojos Rojos",
+                    tipo: "Oscuridad",
+                    nivel: "7",
+                    detalles: "Dragón",
+                    atk: "2400",
+                    def: "2000",
+                    desc: "Un dragón feroz con un ataque mortal. Posee un potencial oculto incalculable.",
+                    imagen: "Dragon_negro_ojos_rojos.jpg"
+                }
+            ]
+        ];
+
+        let paginaCartaActual = 0;
+
+        function renderizarCartas() {
+            const contenedor = document.getElementById('lista-cartas');
+            contenedor.innerHTML = "";
+
+            paginasCartas[paginaCartaActual].forEach(carta => {
+                const item = document.createElement('div');
+                item.className = "card-item componente-tarjeta";
+                item.innerHTML = `
+                    <img src="${carta.imagen}" alt="${carta.nombre}" class="card-img">
+                    <div class="card-info">
+                        <h2 class="card-title">${carta.nombre}</h2>
+                        <div><strong>Tipo:</strong> ${carta.tipo}</div>
+                        <div><strong>Nivel:</strong> ${carta.nivel}</div>
+                        <div>${carta.detalles}</div>
+                        <div><strong>ATK:</strong> ${carta.atk} <strong>DEF:</strong> ${carta.def}</div>
+                    </div>
+                    <div class="card-desc">
+                        ${carta.desc}
+                    </div>
+                `;
+                contenedor.appendChild(item);
+            });
+        }
+
+        document.getElementById('btn-siguiente-cartas').addEventListener('click', () => {
+            paginaCartaActual = (paginaCartaActual + 1) % paginasCartas.length;
+            renderizarCartas();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Renderizado inicial
+        renderizarCartas();
+    </script>
 </body>
 </html>
