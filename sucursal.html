@@ -36,7 +36,6 @@
             font-family: var(--fuente-principal);
         }
 
-        /* HEADER MOBILE-FIRST CON FLEXBOX */
         .sucursal-header {
             width: 100%;
             background-color: var(--bg-header);
@@ -75,7 +74,6 @@
             text-decoration: underline;
         }
 
-        /* MAIN Y CONTENIDO */
         .sucursal-main {
             width: 100%;
             max-width: 900px;
@@ -145,19 +143,14 @@
             background-color: var(--bg-header);
         }
 
-        /* BREAKPOINT PARA ESCRITORIO (min-width: 820px) */
         @media (min-width: 820px) {
             .sucursal-header {
                 flex-direction: row;
                 padding: 12px 30px;
             }
             .sucursal-header__logo { height: 45px; }
-            .sucursal-header nav {
-                gap: 20px;
-            }
-            .sucursal-header__link {
-                font-size: 1rem;
-            }
+            .sucursal-header nav { gap: 20px; }
+            .sucursal-header__link { font-size: 1rem; }
         }
     </style>
 </head>
@@ -175,7 +168,7 @@
 
     <main class="sucursal-main">
         <div class="branch-card componente-tarjeta">
-            <img src="./imagenes/arcana.jpg" alt="Arcana" class="branch-logo">
+            <img src="arcana.jpg" alt="Arcana" class="branch-logo">
             <div class="branch-details">
                 <h2 class="branch-title">Arcana Cartas & Juegos</h2>
                 <p class="branch-desc">Tienda de juegos en La Paz, BCS / Gamecenter / Trading Card Games, Cartas Coleccionables, Role-Playing Games, juegos de mesa y más...</p>
@@ -184,7 +177,7 @@
         </div>
 
         <div class="branch-card componente-tarjeta">
-            <img src="./imagenes/amazing.jpg" alt="Amazing Comics" class="branch-logo">
+            <img src="amazing.jpg" alt="Amazing Comics" class="branch-logo">
             <div class="branch-details">
                 <h2 class="branch-title">Amazing Comics & Books La Paz</h2>
                 <p class="branch-desc">Tienda de comics en La Paz, BCS / Comics, manga, libros, TCG, figuras. Hacemos pedidos especiales.</p>
@@ -192,7 +185,7 @@
             <button class="componente-boton">Info</button>
         </div>
 
-        <a href="#" class="btn-siguiente-main">SIGUIENTE ></a>
+        <a href="#" class="btn-siguiente-main">SIGUIENTE &gt;</a>
     </main>
 
     <footer>
